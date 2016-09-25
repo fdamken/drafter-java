@@ -1,6 +1,7 @@
 # Drafter Java Wrapper
 
 [![Build Status](https://travis-ci.org/fdamken/drafter-java.svg?branch=master)](https://travis-ci.org/fdamken/drafter-java)
+[![Dependency Status](https://www.versioneye.com/user/projects/57e802aabd6fa600316f86da/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57e802aabd6fa600316f86da)
 
 Java wrapper for [Drafter][drafter] API Blueprint Parser harness.
 
