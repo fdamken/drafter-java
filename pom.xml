@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+
+	<!-- ===== Basic Information ===== -->
+
+	<groupId>de.fdamken</groupId>
+	<artifactId>drafter-java</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+
+
+	<!-- ===== Properties ===== -->
+
+	<properties>
+		<!-- Use UTF-8 everywhere! -->
+		<project.properties.encoding>UTF-8</project.properties.encoding>
+
+		<!-- Licensing. -->
+		<project.properties.license.copyrightOwner>Fabian Damken</project.properties.license.copyrightOwner>
+		<project.properties.license.name>mit</project.properties.license.name>
+		<project.properties.license.txtName>MIT License</project.properties.license.txtName>
+		<project.properties.license.url>http://www.apache.org/licenses/LICENSE-2.0.txt</project.properties.license.url>
+
+		<!-- Java Version -->
+		<java.version>1.8</java.version>
+
+		<!-- The source encoding can only be set like this. -->
+		<project.build.sourceEncoding>${project.properties.encoding}</project.build.sourceEncoding>
+
+		<!-- Dependency versions. -->
+		<lombok.version>1.16.10</lombok.version>
+		<slf4j.version>1.7.21</slf4j.version>
+
+		<!-- Maven plugin versions. -->
+		<license-maven-plugin.version>1.9</license-maven-plugin.version>
+		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+		<maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
+
+		<!-- SCM. -->
+		<scm.repository.owner>fdamken</scm.repository.owner>
+		<scm.repository.name>drafter-java</scm.repository.name>
+		<scm.repository.repo>${scm.repository.owner}/${scm.repository.name}</scm.repository.repo>
+		<scm.repository.url>https://github.com/${scm.repository.repo}</scm.repository.url>
+
+		<!-- Issue management. -->
+		<issueManagement.system>Github</issueManagement.system>
+		<issueManagement.url>https://github.com/fdamken/drafter-java/issues</issueManagement.url>
+
+		<!-- CI. -->
+		<ciManagement.system>Travis CI</ciManagement.system>
+		<ciManagement.url>https://travis-ci.org/fdamken/drafter-java</ciManagement.url>
+	</properties>
+
+
+
+	<!-- ===== Project Information ===== -->
+
+	<name>Drafter-Java</name>
+	<description>https://github.com/fdamken/drafter-java</description>
+	<inceptionYear>2016</inceptionYear>
+	<licenses>
+		<license>
+			<name>${project.properties.license.txtName}</name>
+			<url>${project.properties.license.url}</url>
+		</license>
+	</licenses>
+	<organization>
+		<name>fdamken.de</name>
+		<url>http://www.fdamken.de</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>fdamken</id>
+			<name>Fabian Damken</name>
+			<email>fabian.damken@lcmanager.org</email>
+			<organization>${project.organization.name}</organization>
+			<organizationUrl>${project.organization.url}</organizationUrl>
+			<timezone>Europe/Berlin</timezone>
+		</developer>
+	</developers>
+
+
+
+	<!-- ===== Environment Configuration ===== -->
+
+	<issueManagement>
+		<system>${issue-management.system}</system>
+		<url>${issue-management.url}</url>
+	</issueManagement>
+	<ciManagement>
+		<system>${ci-management.system}</system>
+		<url>${ci-management.url}</url>
+	</ciManagement>
+	<scm>
+		<connection>scm:git:git@github.com/${scm.repository.repo}.git</connection>
+		<developerConnection>scm:git:git@github.com:${scm.repository.repo}.git</developerConnection>
+		<url>${scm.repository.url}</url>
+		<tag>HEAD</tag>
+	</scm>
+	<prerequisites>
+		<maven>3.0.5</maven>
+	</prerequisites>
+
+
+
+	<!-- ===== Distribution Management ===== -->
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+
+	<!-- ===== Dependency Management ===== -->
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<!-- Lombok. -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<!-- Logging. -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- Testing dependencies. -->
+	</dependencies>
+
+
+
+	<!-- ===== Build Information ===== -->
+
+	<build>
+		<defaultGoal>clean install</defaultGoal>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>${maven-gpg-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven-javadoc-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${license-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>validate-file-header</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check-file-header</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<addJavaLicenseAfterPackage>false</addJavaLicenseAfterPackage>
+					<copyrightOwners>${project.properties.license.copyrightOwner}</copyrightOwners>
+					<encoding>${project.properties.encoding}</encoding>
+					<failOnMissingHeader>true</failOnMissingHeader>
+					<failOnNotUptodateHeader>true</failOnNotUptodateHeader>
+					<licenseName>${project.properties.license.name}</licenseName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+	<!-- ===== Profiles ===== -->
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
