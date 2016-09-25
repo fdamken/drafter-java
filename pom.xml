@@ -33,6 +33,8 @@
 		<project.build.sourceEncoding>${project.properties.encoding}</project.build.sourceEncoding>
 
 		<!-- Dependency versions. -->
+		<jna.version>4.2.2</jna.version>
+		<junit.version>4.12</junit.version>
 		<lombok.version>1.16.10</lombok.version>
 		<slf4j.version>1.7.21</slf4j.version>
 
@@ -127,6 +129,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>net.java.dev.jna</groupId>
+				<artifactId>jna</artifactId>
+				<version>${jna.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
@@ -139,19 +151,22 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-		<!-- Lombok. -->
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
-
-		<!-- Logging. -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
-
-		<!-- Testing dependencies. -->
 	</dependencies>
 
 

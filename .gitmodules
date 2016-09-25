@@ -1,0 +1,4 @@
+[submodule "drafter"]
+	path = ext/drafter
+	url = git://github.com/apiaryio/drafter.git
+	branch = master
